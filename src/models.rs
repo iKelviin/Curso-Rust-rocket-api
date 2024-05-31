@@ -1,12 +1,15 @@
-use diesel::{prelude::Insertable, Queryable};
+use diesel::{Insertable, AsChangeset, Queryable};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::schema::tbl_produtos;
 
-#[derive(Serialize, Queryable)]
+#[derive(Deserialize, Serialize, Queryable, AsChangeset)]
+#[diesel(table_name = tbl_produtos)]
 pub struct Produto{
+    #[serde(skip_deserializing)]
     pub id: i64,
+    #[serde(skip_deserializing)]
     pub uuid: Uuid,
     pub nome: String,
     pub ean: String,

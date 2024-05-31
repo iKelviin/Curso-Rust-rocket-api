@@ -1,2 +1,6 @@
 [global.databases]
 postgreSQL = {url = "postgres://postgres:postgres@localhost:5432/Localizei"}
+
+[default]
+address = "127.0.0.1"
+port = 8001
